@@ -66,82 +66,85 @@ export function UserProfileImage({ user }: UserProfileImageProps) {
   };
 
   return (
-    <Grid display="flex" flexDirection="column">
-      {user?.profileImage && (
-        <Box display="flex" alignSelf="center">
-          <CardMedia
-            component="img"
-            sx={{
-              borderRadius: "50%",
-              width: "100px",
-              height: "100px",
-              overflow: "hidden",
-              mb: 3,
-            }}
-            image={imageBlobUrl}
-            onError={(
-              event: React.SyntheticEvent<
-                HTMLImageElement,
-                Event
+      <Grid display="flex" flexDirection="column">
+          {user?.profileImage && (
+              <Box display="flex" alignSelf="center">
+                  <CardMedia
+                      component="img"
+                      sx={{
+                          borderRadius: "50%",
+                          width: "100px",
+                          height: "100px",
+                          overflow: "hidden",
+                          mb: 3,
+                      }}
+                      image={imageBlobUrl}
+                      onError={(
+                          event: React.SyntheticEvent<HTMLImageElement, Event>
+                      ) => (event.currentTarget.src = DefaultUser)}
+                  />
+              </Box>
+          )}
+          <Formik
+              initialValues={{}}
+              onSubmit={() => {
+                  handleNewImageUpload();
+              }}
+          >
+              <Form>
+                  <input
+                      hidden
+                      id="uploadImage"
+                      name="uploadImage"
+                      accept="image/*"
+                      type="file"
+                      ref={imageInput}
+                      onInput={(e) => {
+                          handleImageChange(e);
+                      }}
+                  />
+                  <label htmlFor="uploadImage">
+                      <SelectImageButton isSelected={imageSelected} />
+                      <UploadImageButton isSelected={imageSelected} />
+                  </label>
+              </Form>
+          </Formik>
+          {alertTitle === "success" && (
+              <Alert
+                  severity="success"
+                  onClose={() => {
+                      setAlertTitle("");
+                  }}
+                  sx={{
+                      position: "fixed",
+                      bottom: "20px",
+                      right: "20px",
+                      backgroundColor: "#006A4E",
+                      color: "white",
+                  }}
               >
-            ) => (event.currentTarget.src = DefaultUser)}
-          />
-        </Box>
-      )}
-      <Formik
-        initialValues={{}}
-        onSubmit={() => {
-          handleNewImageUpload();
-        }}
-      >
-        <Form>
-          <input
-            hidden
-            id="uploadImage"
-            name="uploadImage"
-            accept="image/*"
-            type="file"
-            ref={imageInput}
-            onInput={(e) => {
-              handleImageChange(e);
-            }}
-          />
-          <label htmlFor="uploadImage">
-            <SelectImageButton isSelected={imageSelected} />
-            <UploadImageButton isSelected={imageSelected} />
-          </label>
-        </Form>
-      </Formik>
-      {alertTitle === "success" &&
-        <Alert severity="success" onClose={() => { setAlertTitle(""); }}
-          sx={{
-            position: 'fixed',
-            bottom: '20px',
-            right: '20px',
-            backgroundColor: '#006A4E',
-            color: 'white'
-          }}>
-          <AlertTitle>
-            Success
-          </AlertTitle>
-          Profile image changed
-        </Alert>
-      }
-      {alertTitle === "error" &&
-        <Alert severity="error" onClose={() => { setAlertTitle(""); }}
-          sx={{
-            position: 'fixed',
-            bottom: '20px',
-            right: '20px',
-            backgroundColor: '#AA0000',
-            color: 'white'
-          }}>
-          <AlertTitle>
-            Error
-          </AlertTitle>
-          An error occurred while changing the image
-        </Alert>
-      }
-    </Grid>
+                  <AlertTitle>Успіх</AlertTitle>
+                  Зображення профілю змінилось
+              </Alert>
+          )}
+          {alertTitle === "error" && (
+              <Alert
+                  severity="error"
+                  onClose={() => {
+                      setAlertTitle("");
+                  }}
+                  sx={{
+                      position: "fixed",
+                      bottom: "20px",
+                      right: "20px",
+                      backgroundColor: "#AA0000",
+                      color: "white",
+                  }}
+              >
+                  <AlertTitle>Помилка</AlertTitle>
+                  Виникла помилка при зміні зображення профілю
+              </Alert>
+          )}
+      </Grid>
   );
 }

@@ -40,120 +40,121 @@ function TagsList({ setPosts, getPosts, setLoadingPostsCount }: TagsProps) {
   };
 
   return (
-    <>
-      {error && <CustomErrorMessage error={error} />}
-      {loading && <SiteLoader />}
+      <>
+          {error && <CustomErrorMessage error={error} />}
+          {loading && <SiteLoader />}
 
-      <Container
-        sx={{
-          backgroundColor: '#F3BD95',
-          margin: '0px',
-          padding: '2%',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'space-around',
-          alignItems: 'center',
-          '@media': {
-            maxWidth: 'none',
-          },
-        }}
-      >
-
-        <FormControl component="fieldset" variant="standard">
-          <Typography
-            sx={{
-              fontSize: '36px',
-              fontWeight: '400',
-              textAlign: 'center',
-              paddingBottom: '32px',
-            }}
-          >
-            Categories
-          </Typography>
-          <FormGroup>
-            <Grid
-              container
-              spacing={12}
-              direction="row"
-              justifyContent="left"
-              alignItems="space-evenly"
+          <Container
               sx={{
-                width: '100%',
-                margin: '0px',
+                  backgroundColor: "#F3BD95",
+                  margin: "0px",
+                  padding: "2%",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "space-around",
+                  alignItems: "center",
+                  "@media": {
+                      maxWidth: "none",
+                  },
               }}
-            >
-              {tags.map((tag) => (
-                <Grid
-                  item
-                  key={tag.tagId}
-                  xs={12}
-                  sm={6}
-                  md={3}
-                  sx={{
-                    display: 'flex',
-                    justifyContent: 'left',
-                    padding: '20px 40px!important',
-                  }}
-                >
-                  <FormControlLabel
-                    control={
-                      <Checkbox
-                        onChange={handleTagsChange}
-                        checked={tagsList.includes(tag.tagId)}
-                        sx={{
-                          color: 'black',
-                          '& .MuiSvgIcon-root': {
-                            fontSize: 30,
-                          },
-                          '&.Mui-checked': {
-                            color: '#116660',
-                          },
-                        }}
-                      />
-                    }
-                    label={tag.name}
-                    value={tag.tagId}
-                  />
-                </Grid>
-              ))}
-            </Grid>
-          </FormGroup>
-        </FormControl>
-        <Stack
-          sx={{ pt: 4 }}
-          direction="row"
-          spacing={2}
-          justifyContent="center"
-        >
-          <Button
-            onClick={buttonCleanTags}
-            variant="contained"
-            sx={{
-              backgroundColor: '#B37E6B',
-              borderRadius: '15px',
-              '&:hover': {
-                backgroundColor: '#9c5e48',
-              },
-            }}
           >
-            Clear
-          </Button>
-          <Button
-            onClick={handleSelectTags}
-            variant="contained"
-            sx={{
-              backgroundColor: '#B37E6B',
-              borderRadius: '15px',
-              '&:hover': {
-                backgroundColor: '#9c5e48',
-              },
-            }}
-          >
-            Find
-          </Button>
-        </Stack>
-      </Container>
-    </>
+              <FormControl component="fieldset" variant="standard">
+                  <Typography
+                      sx={{
+                          fontSize: "36px",
+                          fontWeight: "400",
+                          textAlign: "center",
+                          paddingBottom: "32px",
+                      }}
+                  >
+                      Категорії
+                  </Typography>
+                  <FormGroup>
+                      <Grid
+                          container
+                          spacing={12}
+                          direction="row"
+                          justifyContent="left"
+                          alignItems="space-evenly"
+                          sx={{
+                              width: "100%",
+                              margin: "0px",
+                          }}
+                      >
+                          {tags.map((tag) => (
+                              <Grid
+                                  item
+                                  key={tag.tagId}
+                                  xs={12}
+                                  sm={6}
+                                  md={3}
+                                  sx={{
+                                      display: "flex",
+                                      justifyContent: "left",
+                                      padding: "20px 40px!important",
+                                  }}
+                              >
+                                  <FormControlLabel
+                                      control={
+                                          <Checkbox
+                                              onChange={handleTagsChange}
+                                              checked={tagsList.includes(
+                                                  tag.tagId
+                                              )}
+                                              sx={{
+                                                  color: "black",
+                                                  "& .MuiSvgIcon-root": {
+                                                      fontSize: 30,
+                                                  },
+                                                  "&.Mui-checked": {
+                                                      color: "#116660",
+                                                  },
+                                              }}
+                                          />
+                                      }
+                                      label={tag.name}
+                                      value={tag.tagId}
+                                  />
+                              </Grid>
+                          ))}
+                      </Grid>
+                  </FormGroup>
+              </FormControl>
+              <Stack
+                  sx={{ pt: 4 }}
+                  direction="row"
+                  spacing={2}
+                  justifyContent="center"
+              >
+                  <Button
+                      onClick={buttonCleanTags}
+                      variant="contained"
+                      sx={{
+                          backgroundColor: "#B37E6B",
+                          borderRadius: "15px",
+                          "&:hover": {
+                              backgroundColor: "#9c5e48",
+                          },
+                      }}
+                  >
+                      Очистити
+                  </Button>
+                  <Button
+                      onClick={handleSelectTags}
+                      variant="contained"
+                      sx={{
+                          backgroundColor: "#B37E6B",
+                          borderRadius: "15px",
+                          "&:hover": {
+                              backgroundColor: "#9c5e48",
+                          },
+                      }}
+                  >
+                      Знайти
+                  </Button>
+              </Stack>
+          </Container>
+      </>
   );
 }
 

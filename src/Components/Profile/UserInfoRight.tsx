@@ -11,60 +11,60 @@ export function UserInfoRight() {
   };
 
   return (
-    <>
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "space-between",
-        }}
-      >
-        <Grid
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-          }}
-        >
-          <Button
-            variant="contained"
-            startIcon={<PersonAddIcon />}
-            sx={{
-              backgroundColor: "#57897d",
-              "&:hover": {
-                backgroundColor: "#044945",
-              },
-              mb: 2,
-            }}
+      <>
+          <Box
+              sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "space-between",
+              }}
           >
-            Subscribe
-          </Button>
-          <Button
-            variant="contained"
-            startIcon={<ModeEditIcon />}
-            sx={{
-              backgroundColor: "#57897d",
-              "&:hover": {
-                backgroundColor: "#044945",
-              },
-            }}
-          >
-            Message
-          </Button>
-        </Grid>
+              <Grid
+                  sx={{
+                      display: "flex",
+                      flexDirection: "column",
+                  }}
+              >
+                  <Button
+                      variant="contained"
+                      startIcon={<PersonAddIcon />}
+                      sx={{
+                          backgroundColor: "#57897d",
+                          "&:hover": {
+                              backgroundColor: "#044945",
+                          },
+                          mb: 2,
+                      }}
+                  >
+                      Підписатись
+                  </Button>
+                  <Button
+                      variant="contained"
+                      startIcon={<ModeEditIcon />}
+                      sx={{
+                          backgroundColor: "#57897d",
+                          "&:hover": {
+                              backgroundColor: "#044945",
+                          },
+                      }}
+                  >
+                      Повідомлення
+                  </Button>
+              </Grid>
 
-        <Button
-          variant="contained"
-          sx={{
-            backgroundColor: "#57897d",
-            "&:hover": {
-              backgroundColor: "#044945",
-            },
-          }}
-          onClick={() => navigateToEdit()}
-        >
-          Edit
-        </Button>
-      </Box>
-    </>
+              <Button
+                  variant="contained"
+                  sx={{
+                      backgroundColor: "#57897d",
+                      "&:hover": {
+                          backgroundColor: "#044945",
+                      },
+                  }}
+                  onClick={() => navigateToEdit()}
+              >
+                  Редагувати
+              </Button>
+          </Box>
+      </>
   );
 }

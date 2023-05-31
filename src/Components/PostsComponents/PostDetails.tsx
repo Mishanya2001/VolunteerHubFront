@@ -56,232 +56,243 @@ export function PostDetails({ post, displayButtons }: PostDetailsProps) {
   };
 
   return (
-    <Container component="main" sx={{ marginTop: 3 }}>
-      <Box
-        sx={{
-          display: 'flex',
-          flexDirection: 'column',
-        }}
-      >
-        <Typography
-          sx={{
-            color: '#4F3328',
-            fontFamily: 'Inter',
-            fontStyle: 'normal',
-            fontWeight: '600',
-            fontSize: '24px',
-            textAlign: 'center',
-          }}
-        >
-          {post?.title}
-        </Typography>
-        <Grid
-          container
-          sx={{
-            margin: '15px 0px',
-            display: 'flex',
-            flexDirection: 'row',
-          }}
-        >
-          <Grid
-            item
-            sx={{
-              width: '200px',
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-              margin: '0px 10px',
-            }}
+      <Container component="main" sx={{ marginTop: 3 }}>
+          <Box
+              sx={{
+                  display: "flex",
+                  flexDirection: "column",
+              }}
           >
-            <CardMedia
-              component="img"
-              sx={{
-                height: '150px',
-                width: 'auto',
-                borderRadius: '10px',
-              }}
-              image={postImage}
-              onError={(event: React.SyntheticEvent<HTMLImageElement, Event>) =>
-                (event.currentTarget.src = DefaultPostImage)
-              }
-            />
-          </Grid>
-          <Grid item sx={{ width: '55%' }}>
-            <Typography
-              sx={{
-                fontFamily: 'Inter',
-                fontStyle: 'normal',
-                fontWeight: '400',
-                fontSize: '16px',
-              }}
-            >
-              {post?.description}
-            </Typography>
-          </Grid>
-          <Grid
-            item
-            sx={{
-              width: '20%',
-              display: 'flex',
-              flexDirection: 'column',
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}
-          >
-            <CardMedia
-              component="img"
-              sx={{
-                borderRadius: '50%',
-                width: '100px',
-                height: '100px',
-                overflow: 'hidden',
-              }}
-              image={userImage}
-              onError={(event: React.SyntheticEvent<HTMLImageElement, Event>) =>
-                (event.currentTarget.src = DefaultUser)
-              }
-            />
-            <Typography
-              sx={{
-                fontFamily: 'Inter',
-                fontStyle: 'normal',
-                fontWeight: '400',
-                fontSize: '20px',
-                color: '#4F3328',
-                textAlign: 'center',
-                marginTop: '10px',
-              }}
-            >
-              {`${post?.user.name} ${post?.user.surname}`}
-            </Typography>
-          </Grid>
-        </Grid>
-
-        <Grid
-          container
-          sx={{
-            display: 'flex',
-            justifyContent: 'left',
-            width: '80%',
-          }}
-        >
-          {post?.tags.map((tag) => (
-            <Grid item key={tag.tagId}>
               <Typography
-                sx={{
-                  backgroundColor: 'rgba(243, 189, 149, 0.36);',
-                  padding: '3px 10px',
-                  margin: '0px 10px',
-                  borderRadius: '20px',
-                  boxShadow: '0px 3px 6px black',
-                  fontFamily: 'Inter',
-                  fontStyle: 'normal',
-                  fontWeight: '400',
-                  fontSize: '17px',
-                  marginBottom: '15px',
-                }}
-              >
-                {tag.name}
-              </Typography>
-            </Grid>
-          ))}
-        </Grid>
-
-        {/* send your post if authorize */}
-        {displayButtons && (
-          <>
-            {isAuthorize ? (
-              <>
-                {/* if it`s another user post propose to send
-          else propose to edit post*/}
-                {currentUser?.userId !== post?.userId ? (
-                  <>
-                    {currentUser?.role !== post?.user.role && (
-                      <LinkRouter
-                        to="/send-post"
-                        state={{ receiverPost: post }}
-                        className="send-post-link"
-                      >
-                        Respond
-                      </LinkRouter>
-                    )}
-                  </>
-                ) : (
-                  <>
-                    <LinkRouter
-                      to="/account/posts/edit"
-                      state={{ postToEdit: post }}
-                      className="send-post-link"
-                    >
-                      Edit post
-                    </LinkRouter>
-                    <Button
-                      onClick={handleDeletePost}
-                      sx={{
-                        backgroundColor: '#FF7171',
-                        color: '#FFFCFC',
-                        fontFamily: 'Inter',
-                        fontStyle: 'normal',
-                        fontWeight: '400',
-                        fontSize: '15px',
-                        margin: '0px auto 10px',
-                        width: '30%',
-                        borderRadius: '10px',
-                        padding: '10px',
-                        textAlign: 'center',
-                        '&:hover': {
-                          backgroundColor: '#EF4B4B',
-                        },
-                      }}
-                    >
-                      Delete post
-                    </Button>
-                  </>
-                )}
-              </>
-            ) : (
-              <>
-                {/* else proprose to register*/}
-                <Box
                   sx={{
-                    width: '100%',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    margin: '10px 0px',
+                      color: "#4F3328",
+                      fontFamily: "Inter",
+                      fontStyle: "normal",
+                      fontWeight: "600",
+                      fontSize: "24px",
+                      textAlign: "center",
                   }}
-                >
-                  <Button
-                    sx={{
-                      backgroundColor: 'rgba(89, 143, 135, 0.9)',
-                      color: '#FFFCFC',
-                      fontFamily: 'Inter',
-                      fontStyle: 'normal',
-                      fontWeight: '400',
-                      fontSize: '15px',
-                      width: '30%',
-                      marginBottom: '10px',
-                      borderRadius: '10px',
-                      '&:hover': {
-                        backgroundColor: '#044945',
-                      },
-                    }}
-                    onClick={navigateToLogin}
+              >
+                  {post?.title}
+              </Typography>
+              <Grid
+                  container
+                  sx={{
+                      margin: "15px 0px",
+                      display: "flex",
+                      flexDirection: "row",
+                  }}
+              >
+                  <Grid
+                      item
+                      sx={{
+                          width: "200px",
+                          display: "flex",
+                          justifyContent: "center",
+                          alignItems: "center",
+                          margin: "0px 10px",
+                      }}
                   >
-                    Sign In
-                  </Button>
+                      <CardMedia
+                          component="img"
+                          sx={{
+                              height: "150px",
+                              width: "auto",
+                              borderRadius: "10px",
+                          }}
+                          image={postImage}
+                          onError={(
+                              event: React.SyntheticEvent<
+                                  HTMLImageElement,
+                                  Event
+                              >
+                          ) => (event.currentTarget.src = DefaultPostImage)}
+                      />
+                  </Grid>
+                  <Grid item sx={{ width: "55%" }}>
+                      <Typography
+                          sx={{
+                              fontFamily: "Inter",
+                              fontStyle: "normal",
+                              fontWeight: "400",
+                              fontSize: "16px",
+                          }}
+                      >
+                          {post?.description}
+                      </Typography>
+                  </Grid>
+                  <Grid
+                      item
+                      sx={{
+                          width: "20%",
+                          display: "flex",
+                          flexDirection: "column",
+                          justifyContent: "center",
+                          alignItems: "center",
+                      }}
+                  >
+                      <CardMedia
+                          component="img"
+                          sx={{
+                              borderRadius: "50%",
+                              width: "100px",
+                              height: "100px",
+                              overflow: "hidden",
+                          }}
+                          image={userImage}
+                          onError={(
+                              event: React.SyntheticEvent<
+                                  HTMLImageElement,
+                                  Event
+                              >
+                          ) => (event.currentTarget.src = DefaultUser)}
+                      />
+                      <Typography
+                          sx={{
+                              fontFamily: "Inter",
+                              fontStyle: "normal",
+                              fontWeight: "400",
+                              fontSize: "20px",
+                              color: "#4F3328",
+                              textAlign: "center",
+                              marginTop: "10px",
+                          }}
+                      >
+                          {`${post?.user.name} ${post?.user.surname}`}
+                      </Typography>
+                  </Grid>
+              </Grid>
 
-                  <LinkRouter to="/register" className="standard-link">
-                    {"Don't have an account? Sign Up"}
-                  </LinkRouter>
-                </Box>
-              </>
-            )}
-          </>
-        )}
-      </Box>
-    </Container>
+              <Grid
+                  container
+                  sx={{
+                      display: "flex",
+                      justifyContent: "left",
+                      width: "80%",
+                  }}
+              >
+                  {post?.tags.map((tag) => (
+                      <Grid item key={tag.tagId}>
+                          <Typography
+                              sx={{
+                                  backgroundColor: "rgba(243, 189, 149, 0.36);",
+                                  padding: "3px 10px",
+                                  margin: "0px 10px",
+                                  borderRadius: "20px",
+                                  boxShadow: "0px 3px 6px black",
+                                  fontFamily: "Inter",
+                                  fontStyle: "normal",
+                                  fontWeight: "400",
+                                  fontSize: "17px",
+                                  marginBottom: "15px",
+                              }}
+                          >
+                              {tag.name}
+                          </Typography>
+                      </Grid>
+                  ))}
+              </Grid>
+
+              {/* send your post if authorize */}
+              {displayButtons && (
+                  <>
+                      {isAuthorize ? (
+                          <>
+                              {/* if it`s another user post propose to send
+          else propose to edit post*/}
+                              {currentUser?.userId !== post?.userId ? (
+                                  <>
+                                      {currentUser?.role !==
+                                          post?.user.role && (
+                                          <LinkRouter
+                                              to="/send-post"
+                                              state={{ receiverPost: post }}
+                                              className="send-post-link"
+                                          >
+                                              Відповісти
+                                          </LinkRouter>
+                                      )}
+                                  </>
+                              ) : (
+                                  <>
+                                      <LinkRouter
+                                          to="/account/posts/edit"
+                                          state={{ postToEdit: post }}
+                                          className="send-post-link"
+                                      >
+                                          Редагувати пост
+                                      </LinkRouter>
+                                      <Button
+                                          onClick={handleDeletePost}
+                                          sx={{
+                                              backgroundColor: "#FF7171",
+                                              color: "#FFFCFC",
+                                              fontFamily: "Inter",
+                                              fontStyle: "normal",
+                                              fontWeight: "400",
+                                              fontSize: "15px",
+                                              margin: "0px auto 10px",
+                                              width: "30%",
+                                              borderRadius: "10px",
+                                              padding: "10px",
+                                              textAlign: "center",
+                                              "&:hover": {
+                                                  backgroundColor: "#EF4B4B",
+                                              },
+                                          }}
+                                      >
+                                          Видалити пост
+                                      </Button>
+                                  </>
+                              )}
+                          </>
+                      ) : (
+                          <>
+                              {/* else proprose to register*/}
+                              <Box
+                                  sx={{
+                                      width: "100%",
+                                      display: "flex",
+                                      flexDirection: "column",
+                                      justifyContent: "center",
+                                      alignItems: "center",
+                                      margin: "10px 0px",
+                                  }}
+                              >
+                                  <Button
+                                      sx={{
+                                          backgroundColor:
+                                              "rgba(89, 143, 135, 0.9)",
+                                          color: "#FFFCFC",
+                                          fontFamily: "Inter",
+                                          fontStyle: "normal",
+                                          fontWeight: "400",
+                                          fontSize: "15px",
+                                          width: "30%",
+                                          marginBottom: "10px",
+                                          borderRadius: "10px",
+                                          "&:hover": {
+                                              backgroundColor: "#044945",
+                                          },
+                                      }}
+                                      onClick={navigateToLogin}
+                                  >
+                                      Увійти
+                                  </Button>
+
+                                  <LinkRouter
+                                      to="/register"
+                                      className="standard-link"
+                                  >
+                                      {"Не маєте аккаунту? Зареєструйтесь"}
+                                  </LinkRouter>
+                              </Box>
+                          </>
+                      )}
+                  </>
+              )}
+          </Box>
+      </Container>
   );
 }
 

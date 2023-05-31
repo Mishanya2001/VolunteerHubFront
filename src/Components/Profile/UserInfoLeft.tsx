@@ -10,14 +10,14 @@ export function UserInfoLeft(props: UserInfoLeftProps) {
   const getRoleName = (role: number | undefined) => {
     switch (role) {
       case 0:
-        return "Volunteer";
+        return "Волонтер";
       case 1:
-        return "Needful";
+        return "Нужденний";
       case 2:
-        return "Admin";
+        return "Адміністратор";
 
       default:
-        return "unknown";
+        return "Невідомий";
     }
   };
   return (
